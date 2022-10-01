@@ -1,6 +1,19 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./components/App";
-import "./index.css";
+import React, { useContext } from "react";
+import Header from "./Header";
+import Profile from "./Profile";
+import { UserProvider } from "../context/user";
+import {ThemeContext } from "../context/theme";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+function App() {
+  const { theme } = useContext(ThemeContext);
+  return (
+    <main className={theme}>
+      <UserProvider>
+        <Header />
+        <Profile />
+      </UserProvider>
+    </main>
+  );
+}
+
+export default App;
